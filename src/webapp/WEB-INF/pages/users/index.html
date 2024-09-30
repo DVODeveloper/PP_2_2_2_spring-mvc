@@ -9,7 +9,7 @@
 <h1>Users List</h1>
 
 <div th:each="user : ${users}">
-    <a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getName()}">User</a>
+    <a th:href="@{/users/view(id=${user.getId()})}" th:text="${user.getName()}">User</a>
 </div>
 
 <br/>

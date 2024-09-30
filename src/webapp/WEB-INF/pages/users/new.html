@@ -5,14 +5,14 @@
     <title>Create New User</title>
 </head>
 <body>
-
-<form th:method="POST" th:action="@{/users}" th:object="${user}">
+<h1>Create New User</h1>
+<form th:method="post" th:action="@{/users}" th:object="${user}">
     <label for="name">Enter name: </label>
-    <input type="text" th:field="*{name}" id="name">
+    <input type="text" th:field="*{name}" id="name" required>
     <br/>
 
     <label for="surname">Enter surname: </label>
-    <input type="text" th:field="*{surname}" id="surname">
+    <input type="text" th:field="*{surname}" id="surname" required>
     <br/>
 
     <input type="submit" value="Create!"/>

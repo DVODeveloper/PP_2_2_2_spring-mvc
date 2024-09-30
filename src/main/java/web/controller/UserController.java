@@ -24,19 +24,13 @@ public class UserController {
         return "users/index";
     }
 
-    @GetMapping("/{id}")
-    public String getUserById(@PathVariable("id") int id, Model model) {
+    @GetMapping("/view")
+    public String getUserById(@RequestParam("id") int id, Model model) {
         model.addAttribute("user", userService.readUser(id));
         return "users/show";
     }
 
-//    @GetMapping("new")
-//    public String newUser(Model model) {
-//        model.addAttribute("user", new User());
-//        return "users/new";
-//    }
-
-    @GetMapping("new")
+    @GetMapping("/new")
     public String newUser(@ModelAttribute("user") User user, Model model) {
         return "users/new";
     }
@@ -47,21 +41,22 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/{id}/edit")
-    public String editUser(Model model, @PathVariable("id") int id) {
+    @GetMapping("/edit")
+    public String editUser(Model model, @RequestParam("id") int id) {
         model.addAttribute("user", userService.readUser(id));
         return "users/edit";
     }
 
-    @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user") User user, @PathVariable("id") int id) {
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") User user, @RequestParam("id") int id) {
         userService.updateUser(id, user);
         return "redirect:/users";
     }
 
-    @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable("id") int id) {
+    @PostMapping("/delete")
+    public String deleteUser(@RequestParam("id") int id) {
         userService.deleteUser(id);
         return "redirect:/users";
     }
 }
+

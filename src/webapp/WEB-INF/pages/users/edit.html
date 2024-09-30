@@ -6,15 +6,16 @@
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+<form th:method="post" th:action="@{/users/update}" th:object="${user}">
   <label for="name">Enter name: </label>
-  <input type="text" th:field="*{name}" id="name">
+  <input type="text" th:field="*{name}" id="name" required>
   <br/>
 
   <label for="surname">Enter surname: </label>
-  <input type="text" th:field="*{surname}" id="surname">
+  <input type="text" th:field="*{surname}" id="surname" required>
   <br/>
 
+  <input type="hidden" name="id" th:value="${user.getId()}"/>
   <input type="submit" value="Update!"/>
 </form>
 
